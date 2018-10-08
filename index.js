@@ -48,6 +48,7 @@ class HtmlWebpackPlugin {
     // generate it at correct location
     const filename = this.options.filename;
     if (path.resolve(filename) === path.normalize(filename)) {
+      this.options.path = path.dirname(path.resolve(filename));
       this.options.filename = path.relative(compiler.options.output.path, filename);
     }
 
@@ -445,7 +446,12 @@ class HtmlWebpackPlugin {
       assets.chunks[chunkName] = {};
 
       // Prepend the public path to all chunk files
-      let chunkFiles = [].concat(chunk.files).map(chunkFile => publicPath + chunkFile);
+      let chunkFiles = [];
+      if(this.options.relative) {
+        chunkFiles = [].concat(chunk.files).map(chunkFile => path.relative(this.options.path,path.resolve(compilation.options.output.path,chunkFile)));
+      } else {
+        chunkFiles = [].concat(chunk.files).map(chunkFile => publicPath + chunkFile);
+      }
 
       // Append a hash for cache busting
       if (this.options.hash) {

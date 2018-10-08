@@ -121,6 +121,7 @@ Allowed values are as follows
 |:--:|:--:|:-----:|:----------|
 |**[`title`](#)**|`{String}`|`Webpack App`|The title to use for the generated HTML document|
 |**[`filename`](#)**|`{String}`|`'index.html'`|The file to write the HTML to. Defaults to `index.html`. You can specify a subdirectory here too (eg: `assets/admin.html`)|
+|**[`relative`](#)**|`{Boolean}`|`|Whether to use the filename as reference to compute relative paths to the assets. Defaults to false.|
 |**[`template`](#)**|`{String}`|``|`webpack` require path to the template. Please see the [docs](https://github.com/jantimon/html-webpack-plugin/blob/master/docs/template-option.md) for details|
 |**[`templateParameters`](#)**|`{Boolean\|Object\|Function}`|``| Allows to overwrite the parameters used in the template |
 |**[`templateContent`](#)**|`{String\|Function}`|``|A string that contains (or function that returns) the content of the template. `template` and `templateContent` options **may not both be used**. Overwrites `template` option|
